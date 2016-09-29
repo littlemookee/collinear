@@ -28,12 +28,14 @@ public class FastCollinearPoints
 				double curSlope = origins[c].slopeTo(points[c]);
 				if (curSlope == prevSlope) segSize++;
 				else {
-					
+					if (segSize > 3) {
+						Arrays.sort(points, c-segSize, c);
+						
+						
+					}
 					
 				}
-			}
-			Arrays.sort
-			
+			}		
 			
 			
 		}
