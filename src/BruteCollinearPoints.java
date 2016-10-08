@@ -17,14 +17,18 @@ public class BruteCollinearPoints
 	 * Finds all line segments containing 4 points
 	 * @param points
 	 */
-	public BruteCollinearPoints(Point[] points)
-	{
-		if (points == null)
+	public BruteCollinearPoints(Point[] points_)
+	{		
+		if (points_ == null)
 			throw new java.lang.NullPointerException();
-		
-		for (int p = 0; p < points.length; p++)
+	
+		Point[] points = new Point[points_.length];
+				
+		for (int p = 0; p < points.length; p++) {
+			points[p] = points_[p];
 			if (points[p] == null)
 				throw new java.lang.NullPointerException();
+		}
 
 		segStack = new Stack<LineSegment>();
 		
@@ -33,7 +37,7 @@ public class BruteCollinearPoints
 		for (int p = 0; p < points.length; p++)
 			for (int q = p+1; q < points.length; q++) {
 				
-				if (points[p] == points[q])
+				if (points[p].equals(points[q]))
 					throw new java.lang.IllegalArgumentException();
 				
 				double pqSlope = points[p].slopeTo(points[q]);				
